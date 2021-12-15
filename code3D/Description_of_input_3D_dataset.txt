@@ -1,0 +1,10 @@
+This is the description of the input 3D source dataset "real3d.bin".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This data set is taken from the paper "Chen, Y., W. Huang, D. Zhang, and W. Chen, 2016, An open-source matlab code package for improved rank-reduction 3d seismic data denoising and reconstruction: Computers & Geosciences, 95, 59-66."
+
+Its download link is https://github.com/chenyk1990/reproducible_research/blob/master/drr3d/matfun/real3d.bin
+
+Note that the original format of it is binary in the above link (real3d.bin). The original size of it is 300(time)*100(crossline)*10(inline). We extract a subset of the full dataset for this 3D example, namely, we use the data for 200-300 in time, 50-100 in crossline and all sections in inline, which makes its size 101*51*10.
+
+
