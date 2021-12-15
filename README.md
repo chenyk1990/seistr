@@ -11,7 +11,7 @@ If you find this package useful, please do not forget to cite the following pape
 @Article{seistr2021,
   author={Hang Wang and Yunfeng Chen and Omar M. Saad and Wei Chen and Yapo Abol{\'e} Serge Innocent Obou{\'e} and Liuqing Yang and Sergey Fomel and Yangkang Chen},
   title = {A Matlab code package for 2D/3D local slope estimation and structural filtering},
-  journal={submitted},
+  journal={Geophysics},
   year={2021}
 }
 
