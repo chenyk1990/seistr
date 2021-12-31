@@ -8,11 +8,16 @@ A Matlab code package for 2D/3D local slope estimation and structural filtering,
 
 If you find this package useful, please do not forget to cite the following paper. 
 
-@Article{seistr2021,
-  author={Hang Wang and Yunfeng Chen and Omar M. Saad and Wei Chen and Yapo Abol{\'e} Serge Innocent Obou{\'e} and Liuqing Yang and Sergey Fomel and Yangkang Chen},
+@Article{seistr2022,
+  author={Hang Wang and Yunfeng Chen and Omar M. Saad and Yapo Abol\'{e} Serge Innocent Obou\'{e} and Liuqing Yang and Sergey Fomel and Yangkang Chen},
   title = {A Matlab code package for 2D/3D local slope estimation and structural filtering},
   journal={Geophysics},
-  year={2021}
+  year=2022,
+  volume=,
+  issue=,
+  number=,
+  pages={doi: 10.1190/geo2021.0266.1},
+  doi={10.1190/geo2021.0266.1},
 }
 
 
