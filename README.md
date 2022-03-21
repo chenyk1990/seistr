@@ -4,7 +4,7 @@ To the best of our knowledge, this is the first (and only) open-source Matlab pa
 
 Mathematical details can be found in the following reference: 
 
-Wang, H., Chen, Y., Saad, O.M., Chen, W., Oboué, Y.A.S.I., Yang, L., Fomel, S. and Chen, Y., 2022. A Matlab code package for 2D/3D local slope estimation and structural filtering. Geophysics, 87(3), pp.1-102.
+Wang, H., Chen, Y., Saad, O.M., Chen, W., Oboué, Y.A.S.I., Yang, L., Fomel, S. and Chen, Y., 2022. A Matlab code package for 2D/3D local slope estimation and structural filtering. Geophysics, 87(3), pp.F1–F14.
 
 
 If you find this package useful, please do not forget to cite the following paper. 
