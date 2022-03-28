@@ -34,6 +34,17 @@ if nargin==1
     verb=1;
 end
 
+if nargin==3
+    eps_dv = 0.01;
+    eps_cg = 1;
+    tol_cg = 0.000001;
+    order=2;
+    rect(1) = 5;
+    rect(2) = 5;
+    rect(3) = 5;
+    verb=1;
+end
+
 dim = 3;
 n = zeros(dim, 1);
 n1 = size(din,1);
