@@ -40,26 +40,26 @@ cmp=d./max(max(max(d)));
 % plot 
 lim1=-1;lim2=1;
 x1=100;y1=100;dx=400;dy=500;
-figure;imagesc(cmp(:,:,5));ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('noisy data (2D slice)');
+% figure;imagesc(cmp(:,:,5));ax = gca;
+% 
+% set(ax, 'CLim', [lim1 lim2]);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('noisy data (2D slice)');
 
 x=permute(cmp,[3,2,1]);
 x1=100;y1=100;dx=500;dy=500;
-figure;h=slice(x,25,5,50,'cubic');%
-ax = gca;set(h,'FaceColor','interp','EdgeColor','none');
-set(ax, 'CLim', [lim1 lim2]);set(gca,'ZDir','reverse');
-set(gcf,'position',[x1,y1,dx,dy]);colorbar;
-xlabel('Xline','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Inline','FontName','Arial','FontWeight','Bold','FontSize',14);
-zlabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('3D noisy data');
+% figure;h=slice(x,25,5,50,'cubic');%
+% ax = gca;set(h,'FaceColor','interp','EdgeColor','none');
+% set(ax, 'CLim', [lim1 lim2]);set(gca,'ZDir','reverse');
+% set(gcf,'position',[x1,y1,dx,dy]);colorbar;
+% xlabel('Xline','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Inline','FontName','Arial','FontWeight','Bold','FontSize',14);
+% zlabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('3D noisy data');
 
 
 cmpn=cmp;
@@ -70,12 +70,12 @@ cmpn=cmp;
 
 %plot figures
 x1=100;y1=100;dx=400;dy=500;
-figure;imagesc(dipi(:,:,5));colormap(jet);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('slope field (2D slice)');
+% figure;imagesc(dipi(:,:,5));colormap(jet);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('slope field (2D slice)');
 
 %% Structural smoothing
 r1=2;
@@ -91,23 +91,23 @@ cmpn_d1=str_pwsmooth_lop3d(cmpn,dipi,dipx,r1,r2,eps,order);
 lim1=-1;lim2=1;
 x1=100;y1=100;dx=400;dy=500;
 
-figure;imagesc(cmpn_d1(:,:,5));ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('denoising result (proposed)');
-
-figure;imagesc(cmpn(:,:,5)-cmpn_d1(:,:,5));ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('removed noise (proposed)');
+% figure;imagesc(cmpn_d1(:,:,5));ax = gca;
+% 
+% set(ax, 'CLim', [lim1 lim2]);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('denoising result (proposed)');
+% 
+% figure;imagesc(cmpn(:,:,5)-cmpn_d1(:,:,5));ax = gca;
+% 
+% set(ax, 'CLim', [lim1 lim2]);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('removed noise (proposed)');
 
 temp=cmpn*0;%temp is the smoothed data by the conventional method
 for i=1:size(cmpn,1)
@@ -122,23 +122,23 @@ for i=1:size(cmpn,1)
     end
 end
 
-figure;imagesc(temp(:,:,5));ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('denoising result (conventional)');
-
-figure;imagesc(cmpn(:,:,5)-temp(:,:,5));ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('removed noise (conventional)');
+% figure;imagesc(temp(:,:,5));ax = gca;
+% 
+% set(ax, 'CLim', [lim1 lim2]);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('denoising result (conventional)');
+% 
+% figure;imagesc(cmpn(:,:,5)-temp(:,:,5));ax = gca;
+% 
+% set(ax, 'CLim', [lim1 lim2]);
+% set(gcf,'position',[x1,y1,dx,dy]);
+% colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
+% ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
+% set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
+% title('removed noise (conventional)');
 
 
 figure('units','normalized','Position',[0.2 0.4 0.4, 1],'color','w');
