@@ -42,29 +42,6 @@ data=data./max(max(data));
 scnoi=(rand(size(data))*2-1)*0.2;
 dn=data+scnoi;
 
-
-% plot figures
-lim1=-1;lim2=1;
-x1=100;y1=100;dx=400;dy=500;
-
-figure;imagesc(data);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('clean data');
-
-figure;imagesc(dn);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('noisy data');
-
 %% Slope estimation
 dtemp=dn*0;%dtemp is the preprocessed data
 for i=1:size(dn,1)
@@ -74,18 +51,6 @@ end
 % default parameter values are suitable for most cases
 [dip]=str_dip2d(dtemp);
 
-%plot figures
-lim1=-1.2;lim2=2.7;
-x1=100;y1=100;dx=400;dy=500;
-figure;imagesc(dip);colormap(jet);ax = gca;
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('slope field');
-
-
 %% Structural smoothing
 r=2;
 eps=0.01;
@@ -93,52 +58,12 @@ order=2;
 % dn is the input noisy data, d1 is the output smoothed data
 d1=str_pwsmooth_lop2d(dn,dip,r,order,eps);
 
-
-
-%plot figures
-lim1=-1;lim2=1;
-x1=100;y1=100;dx=400;dy=500;
-
-figure;imagesc(d1);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('denoising result (proposed)');
-
-figure;imagesc(dn-d1);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('removed noise (proposed)');
-
-figure;imagesc(dtemp);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('denoising result (conventional)');
-
-figure;imagesc(dn-dtemp);ax = gca;
-
-set(ax, 'CLim', [lim1 lim2]);
-set(gcf,'position',[x1,y1,dx,dy]);
-colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
-ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
-set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
-title('removed noise (conventional)');
-
+%% calculate SNR
 snrn=str_snr(data,dn);
 snr1=str_snr(data,d1);
 snrc=str_snr(data,dtemp);
 
+%% visualization
 figure('units','normalized','Position',[0.2 0.4 0.5, 1],'color','w');
 subplot(3,2,1);str_imagesc(dn,0.5,2);axis off;title("Noisy");
 subplot(3,2,2);str_imagesc(dip,1,2);colormap(jet);axis off;title("Local slope");
