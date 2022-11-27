@@ -20,13 +20,10 @@
 %  ns: spray radius (smoothing length) (default value 1-4)
 %  order: accuracy order of PWD filter (default value 1 or 2)
 %  eps: regularization parameter (default value 0.01);
-%
-% Copyright (c) 2021 by the Society of Exploration Geophysicists.
-% You must read and accept usage terms at:
-%    https://software.seg.org/disclaimer.txt before use.
 
 %% Generate synthetic data
 clear;clc;close all;
+addpath(genpath('../seistr'))
 
 w=str_ricker(30,0.001,0.1);
 t=zeros(300,1000);
@@ -142,4 +139,12 @@ snrn=str_snr(data,dn);
 snr1=str_snr(data,d1);
 snrc=str_snr(data,dtemp);
 
+figure('units','normalized','Position',[0.2 0.4 0.5, 1],'color','w');
+subplot(3,2,1);str_imagesc(dn,0.5,2);axis off;title("Noisy");
+subplot(3,2,2);str_imagesc(dip,1,2);colormap(jet);axis off;title("Local slope");
+subplot(3,2,3);str_imagesc(dtemp,0.5,2);axis off;title("Denoised (Mean)");
+subplot(3,2,4);str_imagesc(dn-dtemp,0.5,2);axis off;title("Noise (Mean)");
+subplot(3,2,5);str_imagesc(d1,0.5,2);axis off;title("Denoised (SOMEAN)");
+subplot(3,2,6);str_imagesc(dn-d1,0.5,2);axis off;title("Noise (SOMEAN)");
+print(gcf,'-dpng','-r300','test_seistr_syn2d.png');
 

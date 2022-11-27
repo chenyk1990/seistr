@@ -21,19 +21,16 @@
 %  r1,r2: spray radius (smoothing length) (default value 1-4)
 %  order: accuracy order of PWD filter (default value 1 or 2)
 %  eps: regularization parameter (default value 0.01);
-%
-% Copyright (c) 2021 by the Society of Exploration Geophysicists.
-% You must read and accept usage terms at:
-%    https://software.seg.org/disclaimer.txt before use.
 
 %% load 3D data
 clear;clc;close;
+addpath(genpath('../seistr'))
 
 %The input 3D source data file "real3d.bin" can be downloaded from
 %https://github.com/chenyk1990/reproducible_research/blob/master/drr3d/matfun/real3d.bin,
 %and should be placed in the same folder as test_3D_SOF.m.
 
-fid=fopen('real3d.bin','r');
+fid=fopen('data/real3d.bin','r');
 d=fread(fid,[300,1000],'float');
 d=reshape(d,300,100,10);
 d=d(200:300,50:100,:);
@@ -142,4 +139,18 @@ colorbar;xlabel('Trace','FontName','Arial','FontWeight','Bold','FontSize',14);
 ylabel('Time (ms)','FontName','Arial','FontWeight','Bold','FontSize',14);
 set(gca,'FontName','Arial','FontSize',14,'LineWidth',1);
 title('removed noise (conventional)');
+
+
+figure('units','normalized','Position',[0.2 0.4 0.4, 1],'color','w');
+subplot(3,2,1);
+str_plot3d(cmpn,[50,20,5],[1:101],[1:51],[1:10]);caxis([-0.5,0.5]);zlim([1,101]);xlim([1,51]);ylim([1,10]);title('Noisy');
+subplot(3,2,3);
+str_plot3d(temp,[50,20,5],[1:101],[1:51],[1:10]);caxis([-0.5,0.5]);zlim([1,101]);xlim([1,51]);ylim([1,10]);title('Denoised (Mean)');
+subplot(3,2,4);
+str_plot3d(cmpn-temp,[50,20,5],[1:101],[1:51],[1:10]);caxis([-0.5,0.5]);zlim([1,101]);xlim([1,51]);ylim([1,10]);title('Noise (Mean)');
+subplot(3,2,5);
+str_plot3d(cmpn_d1,[50,20,5],[1:101],[1:51],[1:10]);caxis([-0.5,0.5]);zlim([1,101]);xlim([1,51]);ylim([1,10]);title('Denoised (SOMEAN)');
+subplot(3,2,6);
+str_plot3d(cmpn-cmpn_d1,[50,20,5],[1:101],[1:51],[1:10]);caxis([-0.5,0.5]);zlim([1,101]);xlim([1,51]);ylim([1,10]);title('Noise (SOMEAN)');
+print(gcf,'-dpng','-r300','test_seistr_real3d.png');
 
