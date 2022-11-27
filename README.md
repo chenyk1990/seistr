@@ -5,6 +5,8 @@
 
 **seistr** is an open-source Matlab package for 2D/3D local slope estimation and structural filtering. The seistr package has a variety of applications in both exploration and earthquake seismology, including but not limited to seismic denoising, seismic reconstruction, seismic diffraction separation, constrained LSRTM, constrained FWI, etc. To the best of our knowledge, this is the first (and only) open-source Matlab package for calculating the seismic slope of an input seismic gather/cube/image and performing structure-oriented filtering.
 
+The python version of the seistr package can be found at https://github.com/aaspip/pyseistr.
+
 ## Reference
     Wang, H., Chen, Y., Saad, O.M., Chen, W., Oboué, Y.A.S.I., Yang, L., Fomel, S. and Chen, Y., 2022. A Matlab code package for 2D/3D local slope estimation and structural filtering. Geophysics, 87(3), pp.F1–F14.
     
